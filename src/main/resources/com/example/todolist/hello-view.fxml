@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.todolist.HelloController">
+    <padding>
+        <Insets bottom="5.0" left="5.0" top="5.0"/>
+    </padding>
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="New..." onAction="#showNewDialog"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="exit" onAction="#handleExit"/>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox spacing="10">
+                    <Button onAction="#showNewDialog">
+                        <tooltip>
+                            <Tooltip text="Add a New Todo item."/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/New24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button text="Save" onAction="#saveTheFile">
+                        <tooltip>
+                            <Tooltip text="Save data"/>
+                        </tooltip>
+                    </Button>
+                    <ToggleButton fx:id="filterToggleButton" text="Today's Items" onAction="#handleFilterButton">
+                        <tooltip>
+                            <Tooltip text="Button Down: Show Today's item Only. Button Up: Show all items"/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+
+
+    </top>
+    <left>
+        <ListView fx:id="toDoListView" onMouseClicked="#onClickListView" onKeyPressed="#handleKeyPressed"/>
+    </left>
+    <center>
+        <VBox style="-fx-background-color:white">
+            <TextArea fx:id="itemsDetailsTextArea" VBox.vgrow="ALWAYS" wrapText="true"/>
+            <HBox >
+                <Label text="Due : " style="-fx-background-color:white">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel"  style="-fx-background-color:white">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
